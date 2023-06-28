@@ -17,13 +17,6 @@ export const TopBarWrapper = (props: TopBarWrapperProps) => {
         alignItems: "center",
       }}
     >
-      <Typography
-        variant="h4"
-        component="h1"
-        sx={{ ml: 2, textTransform: "uppercase" }}
-      >
-        Streamer spotlight app
-      </Typography>
       <ThemeSwitch {...props} />
     </Container>
   );

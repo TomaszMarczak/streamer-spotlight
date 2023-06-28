@@ -20,7 +20,7 @@ export const Upvote = ({ count, streamerId }: VoteProps) => {
       badgeContent={count}
       color="primary"
       max={999}
-      anchorOrigin={{ vertical: "top", horizontal: "left" }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
     >
       <Tooltip title="Love it" arrow>
         <motion.div

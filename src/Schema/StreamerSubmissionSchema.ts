@@ -6,7 +6,7 @@ export const StreamerSubmissionSchema = z.object({
   description: z
     .string()
     .min(10, "Description must be at least 10 characters long")
-    .max(100, "Description must be less than 100 characters long"),
+    .max(300, "Description must be less than 300 characters long"),
   image: z.string().optional(),
 });
 

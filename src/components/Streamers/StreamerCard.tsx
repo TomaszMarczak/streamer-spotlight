@@ -1,4 +1,12 @@
-import { Avatar, Divider, Link, Paper, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Divider,
+  Grid,
+  Link,
+  Paper,
+  Typography,
+} from "@mui/material";
 
 import { Streamer } from "@prisma/client";
 import { Upvote } from "../Voting/Upvote";
@@ -17,30 +25,41 @@ export const StreamerCard = (props: StreamerCardProps) => {
       elevation={6}
       sx={{
         display: "flex",
+        flexWrap: "wrap",
         p: 2,
         mb: 1,
         borderRadius: 2,
         alignItems: "center",
       }}
     >
-      <Avatar alt={"Streamer name"} src={streamer.image} />
-      <Typography variant="h6" component="div" sx={{ ml: 2 }}>
-        {streamer.name}
-      </Typography>
-      <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
-      <Typography variant="body1" component="div">
-        {streamer.platform}
-      </Typography>
-      <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
-      <Link href={`/streamer/${streamer.id}`} sx={{ position: "relative" }}>
-        <Typography variant="body1" component="div">
-          Visit profile
-        </Typography>
-      </Link>
-      <VotingWrapper>
-        <Upvote count={streamer.upvotes} streamerId={streamer.id} />
-        <Downvote count={streamer.downvotes} streamerId={streamer.id} />
-      </VotingWrapper>
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        p={1}
+      >
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Avatar alt={"Streamer name"} src={streamer.image} />
+
+          <Typography
+            variant="h6"
+            component={Link}
+            href={`/streamer/${streamer.id}`}
+            sx={{ ml: 2, textDecoration: "none", color: "inherit" }}
+          >
+            {streamer.name}
+          </Typography>
+          <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
+          <Typography variant="body1" component="div">
+            {streamer.platform}
+          </Typography>
+        </Box>
+        <VotingWrapper>
+          <Upvote count={streamer.upvotes} streamerId={streamer.id} />
+          <Downvote count={streamer.downvotes} streamerId={streamer.id} />
+        </VotingWrapper>
+      </Grid>
     </Paper>
   );
 };

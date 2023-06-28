@@ -1,10 +1,18 @@
 import { StreamerProfile } from "@/components/StreamerProfile";
-import { get } from "http";
+import { Streamer } from "@prisma/client";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 
-export default function StreamerRecord(props: any) {
+interface StreamerRecordProps {
+  streamer: Streamer;
+}
+
+export default function StreamerRecord(props: StreamerRecordProps) {
   return (
     <>
+      <Head>
+        <title>{props.streamer.name}</title>
+      </Head>
       <StreamerProfile streamer={props.streamer} />
     </>
   );

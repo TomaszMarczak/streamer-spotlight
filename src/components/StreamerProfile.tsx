@@ -1,9 +1,6 @@
 import { Avatar, Divider, Grid, Typography } from "@mui/material";
-import { Section } from "./Section";
+import { Section, SectionTitle } from "./Section";
 import { Streamer } from "@prisma/client";
-import { SectionTitle } from "./Text";
-import { Downvote } from "./Voting/Downvote";
-import { Upvote } from "./Voting/Upvote";
 
 interface StreamerProfileProps {
   streamer: Streamer;

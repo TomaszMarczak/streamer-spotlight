@@ -23,6 +23,7 @@ export default async function handler(
     }
   }
   if (req.method === "POST") {
+    console.log(req.body);
     try {
       const data = await JSON.parse(req.body);
       if (!data.name || !data.description || !data.platform) {

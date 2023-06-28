@@ -1,5 +1,6 @@
-import { Container, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { ThemeSwitch } from "./ThemeSwitch";
+import { Breadcrumbs } from "./Breadcrumbs";
 
 interface TopBarWrapperProps {
   mode: string;
@@ -8,8 +9,7 @@ interface TopBarWrapperProps {
 
 export const TopBarWrapper = (props: TopBarWrapperProps) => {
   return (
-    <Container
-      maxWidth="md"
+    <Box
       sx={{
         display: "flex",
         mt: 2,
@@ -17,7 +17,8 @@ export const TopBarWrapper = (props: TopBarWrapperProps) => {
         alignItems: "center",
       }}
     >
+      <Breadcrumbs />
       <ThemeSwitch {...props} />
-    </Container>
+    </Box>
   );
 };

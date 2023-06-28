@@ -1,5 +1,5 @@
 import { Section } from "./Section";
-import { SectionTitle } from "./Text";
+import { SectionTitle } from "./Section";
 import { useStreamers } from "../context/streamers.context";
 import { StreamerCard } from "./StreamerCard";
 import { SkeletonStreamerCard } from "./Skeletons/SkeletonStreamerCard";
@@ -7,7 +7,6 @@ import { useMemo } from "react";
 
 export default function StreamersList() {
   const { streamers, fetching } = useStreamers();
-  //sort streamers by upvote minus downvote
   useMemo(
     () =>
       streamers.sort(

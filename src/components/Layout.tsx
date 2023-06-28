@@ -1,3 +1,4 @@
+"use client";
 import { StreamersProvider } from "@/context/streamers.context";
 import { Container, CssBaseline, ThemeProvider } from "@mui/material";
 import { ToastContainer } from "react-toastify";
@@ -12,6 +13,7 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   const [mode, setMode] = useLocalStorage("themeMode", "light");
+
   return (
     <ThemeProvider theme={mode === "light" ? lightTheme : darkTheme}>
       <StreamersProvider>

@@ -1,9 +1,9 @@
 import { Avatar, Divider, Link, Paper, Typography } from "@mui/material";
 
 import { Streamer } from "@prisma/client";
-import { Upvote } from "./Voting/Upvote";
-import { Downvote } from "./Voting/Downvote";
-import { VotingWrapper } from "./Voting/VotingWrapper";
+import { Upvote } from "../Voting/Upvote";
+import { Downvote } from "../Voting/Downvote";
+import { VotingWrapper } from "../Voting/VotingWrapper";
 
 interface StreamerCardProps {
   streamer: Streamer;
@@ -18,7 +18,8 @@ export const StreamerCard = (props: StreamerCardProps) => {
       sx={{
         display: "flex",
         p: 2,
-        mb: 2,
+        mb: 1,
+        borderRadius: 2,
         alignItems: "center",
       }}
     >

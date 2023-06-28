@@ -1,11 +1,7 @@
 import { Box } from "@mui/material";
-import { ThemeSwitch } from "./ThemeSwitch";
 import { Breadcrumbs } from "./Breadcrumbs";
 
-interface TopBarWrapperProps {
-  mode: string;
-  setMode: (mode: string) => void;
-}
+interface TopBarWrapperProps {}
 
 export const TopBarWrapper = (props: TopBarWrapperProps) => {
   return (
@@ -13,12 +9,10 @@ export const TopBarWrapper = (props: TopBarWrapperProps) => {
       sx={{
         display: "flex",
         mt: 2,
-
         alignItems: "center",
       }}
     >
       <Breadcrumbs />
-      <ThemeSwitch {...props} />
     </Box>
   );
 };

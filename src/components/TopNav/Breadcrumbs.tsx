@@ -1,7 +1,6 @@
 import { Breadcrumbs as MUIBreadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { text } from "stream/consumers";
 
 interface BreadcrumbTextProps {
   text: string;

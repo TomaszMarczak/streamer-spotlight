@@ -1,4 +1,5 @@
-import { StreamerProfile } from "@/components/StreamerProfile";
+import { Layout } from "@/components/Layouts/Layout";
+import { StreamerProfile } from "@/components/Streamers/StreamerProfile";
 import { Streamer } from "@prisma/client";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -9,12 +10,12 @@ interface StreamerRecordProps {
 
 export default function StreamerRecord(props: StreamerRecordProps) {
   return (
-    <>
+    <Layout>
       <Head>
         <title>{props.streamer.name}</title>
       </Head>
       <StreamerProfile streamer={props.streamer} />
-    </>
+    </Layout>
   );
 }
 

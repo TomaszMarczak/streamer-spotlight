@@ -1,13 +1,12 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import StreamerSubmissionForm from "@/components/StreamerSubmissionForm";
-import StreamersList from "@/components/StreamersList";
-
-const inter = Inter({ subsets: ["latin"] });
+import "@mui/material/styles";
+import StreamerSubmissionForm from "@/components/Streamers/StreamerSubmissionForm";
+import StreamersList from "@/components/Streamers/StreamersList";
+import { Layout } from "@/components/Layouts/Layout";
 
 export default function Home() {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Homepage</title>
         <meta name="description" content="Streamers spotlight application" />
@@ -16,6 +15,6 @@ export default function Home() {
       </Head>
       <StreamerSubmissionForm />
       <StreamersList />
-    </>
+    </Layout>
   );
 }

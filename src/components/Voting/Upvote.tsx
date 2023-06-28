@@ -1,6 +1,7 @@
 import { FaHandPeace } from "react-icons/fa";
 import { Badge, Box, ButtonBase, Tooltip } from "@mui/material";
 import { useStreamers } from "@/context/streamers.context";
+import { motion } from "framer-motion";
 
 export interface VoteProps {
   streamerId: string;
@@ -22,23 +23,29 @@ export const Upvote = ({ count, streamerId }: VoteProps) => {
       anchorOrigin={{ vertical: "top", horizontal: "left" }}
     >
       <Tooltip title="Love it" arrow>
-        <ButtonBase
-          onClick={handleVote}
-          sx={{
-            borderRadius: "50%",
-            width: 40,
-            height: 40,
-            backgroundColor: "success.main",
-            color: "white",
-            zIndex: 350,
-            "&:hover": {
-              backgroundColor: "success.dark",
-              boxShadow: 2,
-            },
+        <motion.div
+          whileTap={{
+            rotate: 45,
           }}
+          transition={{ type: "spring", stiffness: 300, damping: 4 }}
         >
-          <FaHandPeace size={20} />
-        </ButtonBase>
+          <ButtonBase
+            onClick={handleVote}
+            sx={{
+              borderRadius: "50%",
+              width: 40,
+              height: 40,
+              backgroundColor: "success.main",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "success.dark",
+                boxShadow: 2,
+              },
+            }}
+          >
+            <FaHandPeace size={20} />
+          </ButtonBase>
+        </motion.div>
       </Tooltip>
     </Badge>
   );

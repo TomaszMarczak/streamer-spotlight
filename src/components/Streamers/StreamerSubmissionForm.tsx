@@ -1,39 +1,47 @@
-import { Button, MenuItem, TextField, Grid } from "@mui/material";
-import { useState } from "react";
-import { Section } from "./Section";
-import { SectionTitle } from "./Section";
+import { Button, MenuItem, TextField, Grid, Divider, Box } from "@mui/material";
+import { createElement, useState } from "react";
+import { Section } from "../Section";
 import { ImageUpload } from "./ImageUpload";
-import { useStreamers } from "../context/streamers.context";
+import { useStreamers } from "../../context/streamers.context";
 import { Streamer } from "@prisma/client";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { StreamerSubmissionSchema } from "@/Schema/StreamerSubmissionSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { platforms } from "@/assets/platforms";
 
 export default function StreamerSubmissionForm() {
   const [image, setImage] = useState<string>("");
 
   const { saveStreamer } = useStreamers();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data, event) => {
     const streamer = {
       name: data.name,
       description: data.description,
       platform: data.platform,
       image: image ? image : "",
     };
-    saveStreamer(streamer as Streamer);
+    saveStreamer(streamer as Streamer).then(() => {
+      setImage("");
+    });
+    reset();
   };
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(StreamerSubmissionSchema),
+    defaultValues: {
+      name: null,
+      description: null,
+      platform: null,
+    },
   });
 
   return (
-    <Section>
-      <SectionTitle>Streamer submission form</SectionTitle>
+    <Section title="Submit a streamer">
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <TextField
@@ -59,11 +67,19 @@ export default function StreamerSubmissionForm() {
             required
             fullWidth
           >
-            <MenuItem value="Twitch">Twitch</MenuItem>
-            <MenuItem value="YouTube">YouTube</MenuItem>
-            <MenuItem value="TikTok">TikTok</MenuItem>
-            <MenuItem value="Kick">Kick</MenuItem>
-            <MenuItem value="Rumble">Rumble</MenuItem>
+            {platforms.map((platform) => (
+              <MenuItem key={platform.name} value={platform.name}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
+                  {createElement(platform.icon)} {platform.name}
+                </Box>
+              </MenuItem>
+            ))}
           </TextField>
         </Grid>
         <Grid item xs={12}>

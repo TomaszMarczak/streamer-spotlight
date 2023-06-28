@@ -1,8 +1,7 @@
 import type { AppProps } from "next/app";
-import "react-toastify/dist/ReactToastify.min.css";
-import { Layout } from "@/components/Layout";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import createEmotionCache from "../createEmotionCache";
+import "typeface-poppins";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -15,9 +14,7 @@ export default function MyApp(props: ExtendedAppProps) {
 
   return (
     <CacheProvider value={emotionCache}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Component {...pageProps} />
     </CacheProvider>
   );
 }

@@ -57,7 +57,13 @@ To run the application, follow these steps:
    npm install
    ```
 
-4. Start the application
+4. Build the application
+
+   ```shell
+   npm run build
+   ```
+
+5. Start the application
    ```shell
    npm run start
    ```

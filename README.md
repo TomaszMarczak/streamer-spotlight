@@ -1,38 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Streamer's spotlight
 
-## Getting Started
+The Streamer's Spotlight project is a web application that allows users to submit and explore their favorite streamers. It provides a streamlined interface for users to submit streamers, view a real-time updated list of submitted streamers, and access detailed information about specific streamers. The project utilizes SQLite as the database technology for data storage.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- [Features](#features)
+- [Installation](#installation)
+- [License](#license)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Streamer Submission Form:
+  - Users can submit their favorite streamers by providing their name, streaming platform, and description.
+  - The form allows users to select the streaming platform from a dropdown menu.
+- Streamer List:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+  - Displays a list of all submitted streamers.
+  - Each streamer entry shows the streamer's name, streaming platform, description, and the number of upvotes and downvotes.
+  - Real-time updates: The list updates dynamically as new streamers are added and upvotes/downvotes are cast.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Streamer Details Page:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  - Shows detailed information about a specific streamer, including their name, description, platform, and a static image.
+  - Users can navigate to this page to view specific streamer details.
 
-## Learn More
+- Backend Endpoints:
 
-To learn more about Next.js, take a look at the following resources:
+  - POST /api//streamers: Receives new streamer submissions from the frontend and stores them in a database.
+  - GET /api//streamers: Returns all stored streamer submissions in response to a request from the frontend.
+  - DELETE /api/streamers: Deletes all stored streamers (For testing purposes only)
+  - GET /api/streamer/[streamerId]: Returns data about a specific streamer.
+  - PUT /api/streamer/[streamerId]/vote: Receives an upvote for a specific streamer and updates their current upvote/downvote count.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Database:
+  - SQLite
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Installation
 
-## Deploy on Vercel
+To run the application, follow these steps:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone the Git repository:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```shell
+   git clone <repository-url>
+   ```
+
+2. Navigate to the project directory
+
+   ```shell
+   cd streamer-spotlight
+   ```
+
+3. Install dependencies
+
+   ```shell
+   npm install
+   ```
+
+4. Start the application
+   ```shell
+   npm run start
+   ```
+
+This command will start the application and make it accessible at http://localhost:3000.
+
+## License
+
+This project is licensed under the MIT License

@@ -42,7 +42,7 @@ To run the application, follow these steps:
 1. Clone the Git repository:
 
    ```shell
-   git clone <repository-url>
+   git clone https://github.com/TomaszMarczak/streamer-spotlight.git
    ```
 
 2. Navigate to the project directory
